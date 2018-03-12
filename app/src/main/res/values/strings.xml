@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">HexBin</string>
+    <string name="edit_message">Enter a message</string>
+
+</resources>

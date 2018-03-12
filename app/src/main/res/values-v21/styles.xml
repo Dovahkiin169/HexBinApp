@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="AppTheme.NoActionBar" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">?android:attr/colorActivatedHighlight</item>
+        <item name="android:statusBarColor">?android:attr/colorMultiSelectHighlight</item>
+        <item name="android:navigationBarColor">?android:attr/colorActivatedHighlight</item>
+    </style>
+
+    <style name="Theme.Theme2.Light.NoActionBar" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@android:color/holo_orange_dark</item>
+        <item name="colorAccent">@android:color/holo_orange_dark</item>
+        <item name="android:navigationBarColor">@android:color/holo_orange_dark</item>
+        <item name="android:statusBarColor">?android:attr/colorMultiSelectHighlight</item>
+        <item name="android:windowBackground">?android:attr/colorBackground</item>
+    </style>
+</resources>
