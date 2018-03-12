@@ -763,7 +763,7 @@ public class MainActivity extends AppCompatActivity {
 
         if(EditTextBin.hasFocus() && !Bin.isEmpty())
         {
-            Buff = Op.Keep();
+            Buff = Bin;
             Op.Keep(Buff);
         }
         if(EditTextDec.hasFocus() && !Dec.isEmpty())
