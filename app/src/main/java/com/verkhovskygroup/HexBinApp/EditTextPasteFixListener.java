@@ -1,5 +1,5 @@
 package com.verkhovskygroup.HexBinApp;
 
-public interface EditTextListener {
+public interface EditTextPasteFixListener {
     void onUpdate();
 }

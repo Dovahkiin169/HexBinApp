@@ -4,26 +4,26 @@ import android.content.Context;
 import android.util.AttributeSet;
 import java.util.ArrayList;
 
-public class EditText extends androidx.appcompat.widget.AppCompatEditText
+public class EditTextPasteFix extends androidx.appcompat.widget.AppCompatEditText
 {
-    ArrayList<EditTextListener> Listener;
+    ArrayList<EditTextPasteFixListener> Listener;
 
-    public EditText(Context context) {
+    public EditTextPasteFix(Context context) {
         super(context);
         Listener = new ArrayList<>();
     }
 
-    public EditText(Context context, AttributeSet attrs) {
+    public EditTextPasteFix(Context context, AttributeSet attrs) {
         super(context, attrs);
         Listener = new ArrayList<>();
     }
 
-    public EditText(Context context, AttributeSet attrs, int defStyle) {
+    public EditTextPasteFix(Context context, AttributeSet attrs, int defStyle) {
         super(context, attrs, defStyle);
         Listener = new ArrayList<>();
     }
 
-    public void addListener(EditTextListener listener) {
+    public void addListener(EditTextPasteFixListener listener) {
         try { Listener.add(listener); }
         catch (NullPointerException e) { e.printStackTrace();
         }
@@ -49,7 +49,7 @@ public class EditText extends androidx.appcompat.widget.AppCompatEditText
     public void onTextCopy(){ }
 
     public void onTextPaste(){
-        for (EditTextListener listener : Listener) {
+        for (EditTextPasteFixListener listener : Listener) {
             listener.onUpdate();
         }
     }

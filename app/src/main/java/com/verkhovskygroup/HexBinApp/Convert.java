@@ -13,6 +13,12 @@ public class Convert {
         Operations Op= new Operations();
         Op.Sign=EditTextSign.getText().toString();
         EditTextBin.setOnKeyListener((v, key, e) -> key >= KeyEvent.KEYCODE_2 && key <= KeyEvent.KEYCODE_Z);
+        int SelectorBin;
+        int SelectorDec;
+        int SelectorHex;
+        SelectorDec = EditTextDec.getSelectionStart();
+        SelectorBin = EditTextBin.getSelectionStart();
+        SelectorHex = EditTextHex.getSelectionStart();
 
         if(!Dec.isEmpty() && EditTextDec.isFocused())
         {
@@ -22,7 +28,7 @@ public class Convert {
             Hex="";
             Bin="";
         }
-        if(!Bin.isEmpty() && EditTextDec.isFocused()) {
+        if(!Bin.isEmpty() && EditTextBin.isFocused()) {
             if(Op.Sign.equals("-"))
                 Buff= Long.toString((-1)*(new BigInteger("1" + Bin, 2).longValue()));
             else
@@ -38,6 +44,10 @@ public class Convert {
             EditTextDec.setText(Op.HexToDec(Hex));
             EditTextHex.setText(Hex);
         }
+
+        EditTextDec.setSelection(SelectorDec);
+        EditTextBin.setSelection(SelectorBin);
+        EditTextHex.setSelection(SelectorHex);
 
     }
 }

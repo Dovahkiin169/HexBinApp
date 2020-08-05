@@ -7,7 +7,7 @@
     android:background="@color/backgroundColor"
     tools:context="com.verkhovskygroup.HexBinApp.MainActivity">
 
-    <com.verkhovskygroup.HexBinApp.EditText
+    <com.verkhovskygroup.HexBinApp.EditTextPasteFix
         android:id="@+id/editTextBin"
         android:layout_width="0dp"
         android:layout_height="0dp"
@@ -25,7 +25,7 @@
         app:layout_constraintStart_toStartOf="@+id/editTextDec"
         app:layout_constraintTop_toBottomOf="@+id/editTextDec" />
 
-    <com.verkhovskygroup.HexBinApp.EditText
+    <com.verkhovskygroup.HexBinApp.EditTextPasteFix
         android:id="@+id/editTextDec"
         android:layout_width="0dp"
         android:layout_height="0dp"
@@ -42,7 +42,7 @@
         app:layout_constraintStart_toEndOf="@+id/Sign"
         app:layout_constraintTop_toBottomOf="@+id/editTextHex" />
 
-    <com.verkhovskygroup.HexBinApp.EditText
+    <com.verkhovskygroup.HexBinApp.EditTextPasteFix
         android:id="@+id/editTextHex"
         android:layout_width="0dp"
         android:layout_height="0dp"

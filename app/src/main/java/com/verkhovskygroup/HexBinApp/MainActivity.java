@@ -22,9 +22,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     Button A, B, C, D, E, F;
     Button Clear, Delete, Plus, Minus, Multiple, Divide, Equals;
 
-    EditText EditTextHex;
-    EditText EditTextDec;
-    EditText EditTextBin;
+    EditTextPasteFix EditTextHex;
+    EditTextPasteFix EditTextDec;
+    EditTextPasteFix EditTextBin;
     EditText EditTextSign;
 
     String Hex, Bin, Dec;
@@ -38,9 +38,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_HIDDEN);
 
-        EditTextHex = (EditText) findViewById(R.id.editTextHex);
-        EditTextDec = (EditText) findViewById(R.id.editTextDec);
-        EditTextBin = (EditText) findViewById(R.id.editTextBin);
+        EditTextHex = (EditTextPasteFix) findViewById(R.id.editTextHex);
+        EditTextDec = (EditTextPasteFix) findViewById(R.id.editTextDec);
+        EditTextBin = (EditTextPasteFix) findViewById(R.id.editTextBin);
 
         EditTextHex.setOnFocusChangeListener(this);
         EditTextDec.setOnFocusChangeListener(this);
