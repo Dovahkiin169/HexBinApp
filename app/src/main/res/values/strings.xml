@@ -1,5 +1,42 @@
 <resources>
     <string name="app_name">HexBin</string>
     <string name="edit_message">Enter a message</string>
+    <string name="textViewDecText">Dec</string>
+    <string name="textViewHexText">Hex</string>
+    <string name="ButtonClearText">Clear</string>
+    <string name="Button1Text">1</string>
+    <string name="Button2Text">2</string>
+    <string name="Button3Text">3</string>
+    <string name="Button4Text">4</string>
+    <string name="Button6Text">6</string>
+    <string name="Button5Text">5</string>
+    <string name="Button7Text">7</string>
+    <string name="Button8Text">8</string>
+    <string name="Button9Text">9</string>
+    <string name="Button0Text">0</string>
+    <string name="ButtonAText">A</string>
+    <string name="ButtonBText">B</string>
+    <string name="ButtonCText">C</string>
+    <string name="ButtonDText">D</string>
+    <string name="ButtonEText">E</string>
+    <string name="ButtonFText">F</string>
+    <string name="ButtonDelText">⌫</string>
+    <string name="ButtonPlusText">+</string>
+    <string name="ButtonMinusText">-</string>
+    <string name="ButtonMultipleText">*</string>
+    <string name="ButtonDivideText">/</string>
+    <string name="ButtonEqualsText">=</string>
+    <string name="textViewBinText">Bin</string>
+    <string name="HexRegex">[0-9A-F]+</string>
+    <string name="DecRegex">\\d+</string>
+    <string name="BinRegex">[0-1]+</string>
+    <string name="MaxQ">Maximum quantity = </string>
+    <string name="HexMax">7FFFFFFFFFFFFFFF</string>
+    <string name="DecMax">9 223 372 036 854 775 807</string>
+    <string name="BinMax">1111 1111 1111 1111 1111 1111 1111 1111 1111 1111 1111 1111 1111 1111 1111 1111</string>
+    <string name="BinMaxData">1111111111111111111111111111111111111111111111111111111111111111</string>
+
+
+
 
 </resources>
