@@ -9,29 +9,34 @@ public class Convert {
         String Bin = EditTextBin.getText().toString();
         String Dec = EditTextDec.getText().toString();
         String Buff;
-        String Buff2;
 
         Operations Op= new Operations();
         Op.Sign=EditTextSign.getText().toString();
         EditTextBin.setOnKeyListener((v, key, e) -> key >= KeyEvent.KEYCODE_2 && key <= KeyEvent.KEYCODE_Z);
 
-        if(!Dec.isEmpty())
+        if(!Dec.isEmpty() && EditTextDec.isFocused())
         {
+            EditTextDec.setText(Dec);
             EditTextBin.setText(Op.DecimalToBinary(Long.parseLong(Dec)));
             EditTextHex.setText(Op.DecimalToHex(Long.parseLong(Dec)));
+            Hex="";
+            Bin="";
         }
-        if(!Bin.isEmpty()) {
+        if(!Bin.isEmpty() && EditTextDec.isFocused()) {
             if(Op.Sign.equals("-"))
                 Buff= Long.toString((-1)*(new BigInteger("1" + Bin, 2).longValue()));
             else
                 Buff= Long.toString(new BigInteger(Bin, 2).longValue());
+            EditTextBin.setText(Bin);
             EditTextDec.setText(Buff);
             EditTextHex.setText(Op.DecimalToHex(Long.parseLong(EditTextDec.getText().toString())));
+            Hex="";
         }
-        if(!Hex.isEmpty())
+        if(!Hex.isEmpty() && EditTextHex.isFocused())
         {
             EditTextBin.setText(Op.DecimalToBinary(Long.parseLong(Op.HexToDec(Hex))));
             EditTextDec.setText(Op.HexToDec(Hex));
+            EditTextHex.setText(Hex);
         }
 
     }

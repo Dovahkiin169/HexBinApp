@@ -2,7 +2,7 @@ package com.verkhovskygroup.HexBinApp;
 
 import android.os.Build;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatActivity;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.View;
@@ -11,6 +11,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 import java.math.BigInteger;
+import java.util.Objects;
+
 import static java.lang.Long.parseLong;
 
 
@@ -36,9 +38,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_HIDDEN);
 
-        EditTextHex = findViewById(R.id.editTextHex);
-        EditTextDec = findViewById(R.id.editTextDec);
-        EditTextBin = findViewById(R.id.editTextBin);
+        EditTextHex = (EditText) findViewById(R.id.editTextHex);
+        EditTextDec = (EditText) findViewById(R.id.editTextDec);
+        EditTextBin = (EditText) findViewById(R.id.editTextBin);
 
         EditTextHex.setOnFocusChangeListener(this);
         EditTextDec.setOnFocusChangeListener(this);
@@ -143,7 +145,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             }
             @Override
             public void afterTextChanged(Editable arg0) {
-                if (EditTextDec.getText().toString().length()==64)
+                if (Objects.requireNonNull(EditTextDec.getText()).toString().length()==64)
                 {
                     EditTextDec.setText(Op.HexToDec(String.valueOf(EditTextHex.getText())));
                 }
@@ -172,9 +174,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         });
         EditTextSign.addTextChangedListener(new TextWatcher() {
             public void onTextChanged(CharSequence s, int start, int before, int count) {
-                if(EditTextSign.getText().toString().equals("-") && !EditTextDec.getText().toString().equals("") && !EditTextBin.getText().toString().equals("0"))
+                if(EditTextSign.getText().toString().equals("-") && !Objects.requireNonNull(EditTextDec.getText()).toString().equals("") && !Objects.requireNonNull(EditTextBin.getText()).toString().equals("0"))
                     EditTextBin.setText(Long.toBinaryString((-1) * parseLong(EditTextDec.getText().toString())).substring(1));
-                else if(EditTextSign.getText().toString().equals("+") && !EditTextDec.getText().toString().equals("")) {
+                else if(EditTextSign.getText().toString().equals("+") && !Objects.requireNonNull(EditTextDec.getText()).toString().equals("")) {
                     EditTextBin.setText(Long.toBinaryString(parseLong(EditTextDec.getText().toString())));
                 }
             }
@@ -183,6 +185,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after){}
         });
+
+        EditTextHex.addListener(() -> Convert.convertOperation(EditTextHex, EditTextDec, EditTextBin,EditTextSign));
+        EditTextDec.addListener(() -> Convert.convertOperation(EditTextHex, EditTextDec, EditTextBin,EditTextSign));
+        EditTextBin.addListener(() -> Convert.convertOperation(EditTextHex, EditTextDec, EditTextBin,EditTextSign));
+
     }
     @Override
     public void onClick(View view) {
@@ -247,9 +254,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 ClearText();
                 break;
             case R.id.Delete: {
-                Dec = EditTextDec.getText().toString();
-                Bin = EditTextBin.getText().toString();
-                Hex = EditTextHex.getText().toString();
+                Dec = Objects.requireNonNull(EditTextDec.getText()).toString();
+                Bin = Objects.requireNonNull(EditTextBin.getText()).toString();
+                Hex = Objects.requireNonNull(EditTextHex.getText()).toString();
 
                 int cursorPositionHex = EditTextHex.getSelectionStart();
                 int cursorPositionDec = EditTextDec.getSelectionStart();
@@ -323,7 +330,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 break;
 
             case R.id.ButtonAdd: {
-                Dec = EditTextDec.getText().toString();
+                Dec = Objects.requireNonNull(EditTextDec.getText()).toString();
                 if(!EditTextSign.getText().toString().equals(""))
                     Op.Sign = EditTextSign.getText().toString();
                 if(EditTextSign.isFocused()) {
@@ -338,7 +345,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             }
                 break;
             case R.id.ButtonMinus: {
-                Dec = EditTextDec.getText().toString();
+                Dec = Objects.requireNonNull(EditTextDec.getText()).toString();
                 if(!EditTextSign.getText().toString().equals(""))
                     Op.Sign = EditTextSign.getText().toString();
                 if(EditTextSign.isFocused()){
@@ -353,7 +360,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 break;
             }
             case R.id.ButtonMultiple: {
-                Dec = EditTextDec.getText().toString();
+                Dec = Objects.requireNonNull(EditTextDec.getText()).toString();
                 if(!EditTextSign.getText().toString().equals(""))
                     Op.Sign = EditTextSign.getText().toString();
                 if (!Dec.isEmpty()) {
@@ -364,7 +371,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 break;
             }
             case R.id.ButtonDivide: {
-                Dec = EditTextDec.getText().toString();
+                Dec = Objects.requireNonNull(EditTextDec.getText()).toString();
                 if(!EditTextSign.getText().toString().equals(""))
                 {
                     Op.Sign = EditTextSign.getText().toString();
@@ -377,7 +384,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 break;
             }
             case R.id.ButtonEquals: {
-                Dec = EditTextDec.getText().toString();
+                Dec = Objects.requireNonNull(EditTextDec.getText()).toString();
                 Op.Sign = EditTextSign.getText().toString();
                 if (!Dec.isEmpty()) {
                     Long Result = Op.Equals(parseLong(EditTextDec.getText().toString()));
@@ -411,21 +418,21 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     public void ButtonFunctionsNumbers(CharSequence PassedSymbol) {
 
         if(EditTextBin.hasFocus()) {
-            EditTextBin.getText().insert(EditTextBin.getSelectionStart(), PassedSymbol);
+            Objects.requireNonNull(EditTextBin.getText()).insert(EditTextBin.getSelectionStart(), PassedSymbol);
             EditTextDec.setText("");
             EditTextHex.setText("");
         }
         if(EditTextDec.hasFocus()) {
-            EditTextDec.getText().insert(EditTextDec.getSelectionStart(), PassedSymbol);
+            Objects.requireNonNull(EditTextDec.getText()).insert(EditTextDec.getSelectionStart(), PassedSymbol);
             EditTextBin.setText("");
             EditTextHex.setText("");
         }
         if(EditTextHex.hasFocus()) {
-            EditTextHex.getText().insert(EditTextHex.getSelectionStart(), PassedSymbol);
+            Objects.requireNonNull(EditTextHex.getText()).insert(EditTextHex.getSelectionStart(), PassedSymbol);
             EditTextBin.setText("");
             EditTextDec.setText("");
         }
-        Convert.convertOperation(EditTextHex, EditTextDec, EditTextBin,EditTextSign);
+        Convert.convertOperation(EditTextHex, EditTextDec, EditTextBin, EditTextSign);
     }
     @Override
     public void onFocusChange(View v, boolean hasFocus) {
@@ -436,6 +443,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     HexBoolean(false);
                 if(Two.isEnabled())
                     DecBoolean(false);
+                if(EditTextSign.getText().toString().equals("-"))
+                    BinBoolean(false);
+                else if (!EditTextSign.getText().toString().equals("-"))
+                    BinBoolean(true);
                 break;
             case R.id.editTextDec:
                 SpecBoolean(true);
@@ -488,6 +499,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         Delete.setEnabled(Bl);
         Divide.setEnabled(Bl);
         Multiple.setEnabled(Bl);
+        One.setEnabled(Bl);
+        Zero.setEnabled(Bl);
+    }
+    public void BinBoolean(boolean Bl) {
         One.setEnabled(Bl);
         Zero.setEnabled(Bl);
     }
