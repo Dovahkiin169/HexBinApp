@@ -4,6 +4,7 @@ import android.widget.EditText;
 import java.math.BigInteger;
 
 public class Convert {
+    int flag=0;
     public void convertOperation(EditText EditTextHex, EditText EditTextDec, EditText EditTextBin, EditText EditTextSign) {
         String Hex = EditTextHex.getText().toString();
         String Bin = EditTextBin.getText().toString();
@@ -20,7 +21,7 @@ public class Convert {
         SelectorBin = EditTextBin.getSelectionStart();
         SelectorHex = EditTextHex.getSelectionStart();
 
-        if(!Dec.isEmpty() && EditTextDec.isFocused())
+        if(!Dec.isEmpty() && (EditTextDec.isFocused() || flag ==1))
         {
             EditTextDec.setText(Dec);
             EditTextBin.setText(Op.DecimalToBinary(Long.parseLong(Dec)));
@@ -28,7 +29,7 @@ public class Convert {
             Hex="";
             Bin="";
         }
-        if(!Bin.isEmpty() && EditTextBin.isFocused()) {
+        if(!Bin.isEmpty() && (EditTextBin.isFocused() || flag ==1)) {
             if(Op.Sign.equals("-"))
                 Buff= Long.toString((-1)*(new BigInteger("1" + Bin, 2).longValue()));
             else
@@ -38,7 +39,7 @@ public class Convert {
             EditTextHex.setText(Op.DecimalToHex(Long.parseLong(EditTextDec.getText().toString())));
             Hex="";
         }
-        if(!Hex.isEmpty() && EditTextHex.isFocused())
+        if(!Hex.isEmpty() && (EditTextHex.isFocused() || flag ==1))
         {
             EditTextBin.setText(Op.DecimalToBinary(Long.parseLong(Op.HexToDec(Hex))));
             EditTextDec.setText(Op.HexToDec(Hex));
@@ -48,6 +49,6 @@ public class Convert {
         EditTextDec.setSelection(SelectorDec);
         EditTextBin.setSelection(SelectorBin);
         EditTextHex.setSelection(SelectorHex);
-
+        flag=0;
     }
 }

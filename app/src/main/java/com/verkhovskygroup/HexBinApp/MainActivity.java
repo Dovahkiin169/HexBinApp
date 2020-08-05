@@ -540,9 +540,13 @@ public class MainActivity extends BaseActivity implements View.OnClickListener,V
         Equals.setBackgroundResource(drawable);
     }
 
+    public void saveData(int theme) {
+        Utility.setTheme(getApplicationContext(), theme);
+        Utility.setSign(getApplicationContext(), EditTextSign.getText().toString());
+        Utility.setData(getApplicationContext(), Objects.requireNonNull(EditTextDec.getText()).toString());
+    }
 
-    /***************************************************************************************************************/
-    /** Theme Changer  */
+
     public void recreateActivity()
     {
         Intent intent = getIntent();
@@ -558,6 +562,10 @@ public class MainActivity extends BaseActivity implements View.OnClickListener,V
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.main_menu, menu);
+        EditTextDec.setText(Utility.getData(getApplicationContext()));
+        EditTextSign.setText(Utility.getSign(getApplicationContext()));
+        Convert.flag=1;
+        Convert.convertOperation(EditTextHex, EditTextDec, EditTextBin,EditTextSign);
         if (Utility.getTheme(getApplicationContext())<= 1) {
             menu.getItem(0).setIcon(R.drawable.moon);
             A.setBackgroundResource(R.drawable.left_top_shape);
@@ -577,15 +585,20 @@ public class MainActivity extends BaseActivity implements View.OnClickListener,V
     public boolean onOptionsItemSelected(MenuItem item) {
         if(item.getItemId() == R.id.mybutton && !GetStatus()) {
             item.setIcon(R.drawable.moon);
-            Utility.setTheme(getApplicationContext(), 1);
+            saveData(1);
             recreateActivity();
         }
         else if (item.getItemId() == R.id.mybutton && GetStatus()) {
             item.setIcon(R.drawable.sun);
-            Utility.setTheme(getApplicationContext(), 2);
+            saveData(2);
             recreateActivity();
         }
         return super.onOptionsItemSelected(item);
     }
-    /***************************************************************************************************************/
+
+    @Override
+    protected void onUserLeaveHint() {
+        super.onUserLeaveHint();
+        saveData(Utility.getTheme(getApplicationContext()));
+    }
 }

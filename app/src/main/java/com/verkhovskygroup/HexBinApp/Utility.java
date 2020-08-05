@@ -17,4 +17,26 @@ public class Utility
         SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(context);
         return prefs.getInt(context.getString(R.string.prefs_theme_key), -1);
      }
+     public static void setData(Context context, String data)
+     {
+         SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(context);
+         prefs.edit().putString(context.getString(R.string.prefs_data_key), data).apply();
+     }
+
+     public static String getData(Context context)
+     {
+         SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(context);
+         return prefs.getString(context.getString(R.string.prefs_data_key), "");
+     }
+     public static void setSign(Context context, String data)
+     {
+         SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(context);
+         prefs.edit().putString(context.getString(R.string.prefs_sign_key), data).apply();
+     }
+
+     public static String getSign(Context context)
+     {
+         SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(context);
+         return prefs.getString(context.getString(R.string.prefs_sign_key), "");
+     }
  }
