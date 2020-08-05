@@ -4,9 +4,23 @@
     <color name="colorPrimaryDark">#007c91</color>
     <color name="colorAccent">#5ddef4</color>
 
+    <color name="colorPrimaryDarker">#006673</color>
+    <color name="colorPrimaryDarkDarker">#00282f</color>
+    <color name="colorAccentDarker">#0b92a9</color>
+
     <color name="homeWhite">#ffffff</color>
     <color name="grayedAccent">#00bdd5</color>
     <color name="grayedOut">#00acc1</color>
+
+    <color name="mainShapeDarker">#097284</color>
+    <color name="grayedAccentDarker">#005460</color>
+    <color name="grayedOutDarker">#003238</color>
     <color name="backgroundColor">#ffffff</color>
     <color name="backgroundColo2r">#ffece5</color>
+
+
+    <color name="HomeDark">#00171b</color>
+    <color name="HomeWhite">#FFFFFF</color>
+    <color name="text_color_primary">#ffffff</color>
+    <color name="text_color_secondary">#b2ffffff</color>
 </resources>

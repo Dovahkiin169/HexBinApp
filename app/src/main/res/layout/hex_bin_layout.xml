@@ -4,10 +4,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/backgroundColor"
     tools:context="com.verkhovskygroup.HexBinApp.MainActivity">
 
-    <EditText
+    <com.verkhovskygroup.HexBinApp.EditTextPasteFix
         android:id="@+id/editTextBin"
         android:layout_width="0dp"
         android:layout_height="0dp"
@@ -19,15 +18,13 @@
         android:inputType="none"
         android:maxLength="63"
         android:selectAllOnFocus="false"
-        android:textColor="@color/homeWhite"
-        android:textColorHint="@color/homeWhite"
         android:textSize="16sp"
         app:layout_constraintBottom_toTopOf="@+id/A"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@+id/editTextDec"
         app:layout_constraintTop_toBottomOf="@+id/editTextDec" />
 
-    <EditText
+    <com.verkhovskygroup.HexBinApp.EditTextPasteFix
         android:id="@+id/editTextDec"
         android:layout_width="0dp"
         android:layout_height="0dp"
@@ -38,15 +35,13 @@
         android:importantForAutofill="no"
         android:inputType="none"
         android:maxLength="19"
-        android:textColor="@color/homeWhite"
-        android:textColorHint="@color/homeWhite"
         android:textSize="16sp"
         app:layout_constraintBottom_toTopOf="@+id/editTextBin"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/Sign"
         app:layout_constraintTop_toBottomOf="@+id/editTextHex" />
 
-    <EditText
+    <com.verkhovskygroup.HexBinApp.EditTextPasteFix
         android:id="@+id/editTextHex"
         android:layout_width="0dp"
         android:layout_height="0dp"
@@ -59,8 +54,6 @@
         android:maxLength="16"
         android:selectAllOnFocus="false"
         android:singleLine="false"
-        android:textColor="@color/homeWhite"
-        android:textColorHint="@color/homeWhite"
         android:textSize="16sp"
         app:layout_constraintBottom_toTopOf="@+id/editTextDec"
         app:layout_constraintEnd_toEndOf="parent"
@@ -75,9 +68,6 @@
         android:layout_marginLeft="2dp"
         android:importantForAutofill="no"
         android:inputType="none"
-        android:shadowColor="#FAFAFA"
-        android:textColor="@color/homeWhite"
-        android:textColorHint="@color/homeWhite"
         android:textSize="16sp"
         app:layout_constraintBottom_toBottomOf="@+id/editTextDec"
         app:layout_constraintEnd_toStartOf="@+id/editTextDec"

@@ -1,10 +1,12 @@
 package com.verkhovskygroup.HexBinApp;
 
+import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
-import androidx.appcompat.app.AppCompatActivity;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
@@ -16,7 +18,7 @@ import java.util.Objects;
 import static java.lang.Long.parseLong;
 
 
-public class MainActivity extends AppCompatActivity implements View.OnClickListener,View.OnFocusChangeListener  {
+public class MainActivity extends BaseActivity implements View.OnClickListener,View.OnFocusChangeListener  {
     Convert Convert= new Convert();
     Button Zero, One, Two, Three, Four, Five, Six, Seven, Eight, Nine;
     Button A, B, C, D, E, F;
@@ -32,9 +34,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     Operations Op = new Operations();
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main2);
+        setContentView(R.layout.hex_bin_layout);
 
         getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_HIDDEN);
 
@@ -196,6 +198,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         Hex = "";
         Bin = "";
         Dec = "";
+
+
 
         switch (view.getId()) {
             case R.id.But0:
@@ -506,4 +510,82 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         One.setEnabled(Bl);
         Zero.setEnabled(Bl);
     }
+
+    public void ChangeButtonsBackgroundNumbers(int drawable) {
+        One.setBackgroundResource(drawable);
+        Two.setBackgroundResource(drawable);
+        Three.setBackgroundResource(drawable);
+        Four.setBackgroundResource(drawable);
+        Five.setBackgroundResource(drawable);
+        Six.setBackgroundResource(drawable);
+        Seven.setBackgroundResource(drawable);
+        Eight.setBackgroundResource(drawable);
+        Nine.setBackgroundResource(drawable);
+        Zero.setBackgroundResource(drawable);
+
+        Clear.setBackgroundResource(drawable);
+        Delete.setBackgroundResource(drawable);
+    }
+    public void ChangeButtonsBackgroundLettersAndSigns(int drawable) {
+        B.setBackgroundResource(drawable);
+        C.setBackgroundResource(drawable);
+        D.setBackgroundResource(drawable);
+        E.setBackgroundResource(drawable);
+        F.setBackgroundResource(drawable);
+
+        Divide.setBackgroundResource(drawable);
+        Multiple.setBackgroundResource(drawable);
+        Minus.setBackgroundResource(drawable);
+        Plus.setBackgroundResource(drawable);
+        Equals.setBackgroundResource(drawable);
+    }
+
+
+    /***************************************************************************************************************/
+    /** Theme Changer  */
+    public void recreateActivity()
+    {
+        Intent intent = getIntent();
+        intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN)
+            finishAffinity();
+        else
+            finish();
+        overridePendingTransition(0, 0);
+        startActivity(intent);
+        overridePendingTransition(0, 0);
+    }
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.main_menu, menu);
+        if (Utility.getTheme(getApplicationContext())<= 1) {
+            menu.getItem(0).setIcon(R.drawable.moon);
+            A.setBackgroundResource(R.drawable.left_top_shape);
+            ChangeButtonsBackgroundNumbers(R.drawable.main_shape);
+            ChangeButtonsBackgroundLettersAndSigns(R.drawable.main_shape_grayed_accent);
+        }
+        else {
+            menu.getItem(0).setIcon(R.drawable.sun);
+            A.setBackgroundResource(R.drawable.left_top_shape_dark);
+            ChangeButtonsBackgroundNumbers(R.drawable.main_shape_dark);
+            ChangeButtonsBackgroundLettersAndSigns(R.drawable.main_shape_grayed_accent_dark);
+        }
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if(item.getItemId() == R.id.mybutton && !GetStatus()) {
+            item.setIcon(R.drawable.moon);
+            Utility.setTheme(getApplicationContext(), 1);
+            recreateActivity();
+        }
+        else if (item.getItemId() == R.id.mybutton && GetStatus()) {
+            item.setIcon(R.drawable.sun);
+            Utility.setTheme(getApplicationContext(), 2);
+            recreateActivity();
+        }
+        return super.onOptionsItemSelected(item);
+    }
+    /***************************************************************************************************************/
 }

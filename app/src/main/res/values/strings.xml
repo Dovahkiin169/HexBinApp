@@ -35,8 +35,5 @@
     <string name="DecMax">9 223 372 036 854 775 807</string>
     <string name="BinMax">1111 1111 1111 1111 1111 1111 1111 1111 1111 1111 1111 1111 1111 1111 1111 1111</string>
     <string name="BinMaxData">1111111111111111111111111111111111111111111111111111111111111111</string>
-
-
-
-
+    <string name="prefs_theme_key">theme</string>
 </resources>
