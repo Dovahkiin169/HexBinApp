@@ -20,6 +20,7 @@ import static java.lang.Long.parseLong;
 
 public class MainActivity extends BaseActivity implements View.OnClickListener,View.OnFocusChangeListener  {
     Convert Convert= new Convert();
+    Ads Ads = new Ads();
     Button Zero, One, Two, Three, Four, Five, Six, Seven, Eight, Nine;
     Button A, B, C, D, E, F;
     Button Clear, Delete, Plus, Minus, Multiple, Divide, Equals;
@@ -40,9 +41,9 @@ public class MainActivity extends BaseActivity implements View.OnClickListener,V
 
         getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_HIDDEN);
 
-        EditTextHex = (EditTextPasteFix) findViewById(R.id.editTextHex);
-        EditTextDec = (EditTextPasteFix) findViewById(R.id.editTextDec);
-        EditTextBin = (EditTextPasteFix) findViewById(R.id.editTextBin);
+        EditTextHex = findViewById(R.id.editTextHex);
+        EditTextDec = findViewById(R.id.editTextDec);
+        EditTextBin = findViewById(R.id.editTextBin);
 
         EditTextHex.setOnFocusChangeListener(this);
         EditTextDec.setOnFocusChangeListener(this);
@@ -51,17 +52,17 @@ public class MainActivity extends BaseActivity implements View.OnClickListener,V
         EditTextSign = findViewById(R.id.Sign);
         EditTextSign.setOnFocusChangeListener(this);
 
-        Zero = (Button) findViewById(R.id.But0);
-        One = (Button) findViewById(R.id.But1);
-        Six = (Button) findViewById(R.id.But6);
-        Two = (Button) findViewById(R.id.But2);
-        Three = (Button) findViewById(R.id.But3);
-        Four = (Button) findViewById(R.id.But4);
-        Five = (Button) findViewById(R.id.But5);
-        Six = (Button) findViewById(R.id.But6);
-        Seven = (Button) findViewById(R.id.But7);
-        Eight = (Button) findViewById(R.id.But8);
-        Nine = (Button) findViewById(R.id.But9);
+        Zero = findViewById(R.id.But0);
+        One = findViewById(R.id.But1);
+        Six = findViewById(R.id.But6);
+        Two = findViewById(R.id.But2);
+        Three = findViewById(R.id.But3);
+        Four = findViewById(R.id.But4);
+        Five =  findViewById(R.id.But5);
+        Six = findViewById(R.id.But6);
+        Seven = findViewById(R.id.But7);
+        Eight = findViewById(R.id.But8);
+        Nine = findViewById(R.id.But9);
         Zero.setOnClickListener(this);
         One.setOnClickListener(this);
         Two.setOnClickListener(this);
@@ -72,12 +73,12 @@ public class MainActivity extends BaseActivity implements View.OnClickListener,V
         Eight.setOnClickListener(this);
         Nine.setOnClickListener(this);
 
-        A = (Button) findViewById(R.id.A);
-        B = (Button) findViewById(R.id.B);
-        C = (Button) findViewById(R.id.C);
-        D = (Button) findViewById(R.id.D);
-        E = (Button) findViewById(R.id.E);
-        F = (Button) findViewById(R.id.F);
+        A = findViewById(R.id.A);
+        B = findViewById(R.id.B);
+        C = findViewById(R.id.C);
+        D = findViewById(R.id.D);
+        E = findViewById(R.id.E);
+        F = findViewById(R.id.F);
         A.setOnClickListener(this);
         B.setOnClickListener(this);
         C.setOnClickListener(this);
@@ -85,16 +86,16 @@ public class MainActivity extends BaseActivity implements View.OnClickListener,V
         E.setOnClickListener(this);
         F.setOnClickListener(this);
 
-        Clear = (Button) findViewById(R.id.Clear);
-        Delete = (Button) findViewById(R.id.Delete);
+        Clear = findViewById(R.id.Clear);
+        Delete = findViewById(R.id.Delete);
         Clear.setOnClickListener(this);
         Delete.setOnClickListener(this);
 
-        Plus = (Button) findViewById(R.id.ButtonAdd);
-        Minus = (Button) findViewById(R.id.ButtonMinus);
-        Multiple = (Button) findViewById(R.id.ButtonMultiple);
-        Divide = (Button) findViewById(R.id.ButtonDivide);
-        Equals = (Button) findViewById(R.id.ButtonEquals);
+        Plus = findViewById(R.id.ButtonAdd);
+        Minus = findViewById(R.id.ButtonMinus);
+        Multiple = findViewById(R.id.ButtonMultiple);
+        Divide = findViewById(R.id.ButtonDivide);
+        Equals = findViewById(R.id.ButtonEquals);
         Plus.setOnClickListener(this);
         Minus.setOnClickListener(this);
         Multiple.setOnClickListener(this);
@@ -192,6 +193,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener,V
         EditTextDec.addListener(() -> Convert.convertOperation(EditTextHex, EditTextDec, EditTextBin,EditTextSign));
         EditTextBin.addListener(() -> Convert.convertOperation(EditTextHex, EditTextDec, EditTextBin,EditTextSign));
 
+        Ads.Ads(MainActivity.this);
     }
     @Override
     public void onClick(View view) {
@@ -593,6 +595,8 @@ public class MainActivity extends BaseActivity implements View.OnClickListener,V
             saveData(2);
             recreateActivity();
         }
+        else if (item.getItemId() == R.id.settings)
+            Ads.showInterstitial();
         return super.onOptionsItemSelected(item);
     }
 
