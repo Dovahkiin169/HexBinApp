@@ -6,4 +6,4 @@ HexBin includes the following features:
 — Copy and Paste is implemented by using a long press on the field.
 
 See screenshots for more details.
-https://github.com/Dovahkiin169/HexBinApp/blob/master/Screenshots/1.png/image.jpg?raw=true
+https://github.com/Dovahkiin169/HexBinApp/blob/master/Screenshots/1.png?raw=true
