@@ -12,9 +12,14 @@ import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
+
+import com.google.android.gms.ads.MobileAds;
+import com.google.android.gms.ads.RequestConfiguration;
+
 import java.math.BigInteger;
 import java.util.Objects;
 
+import static com.google.android.gms.ads.RequestConfiguration.MAX_AD_CONTENT_RATING_G;
 import static java.lang.Long.parseLong;
 
 
@@ -192,6 +197,11 @@ public class MainActivity extends BaseActivity implements View.OnClickListener,V
         EditTextHex.addListener(() -> Convert.convertOperation(EditTextHex, EditTextDec, EditTextBin,EditTextSign));
         EditTextDec.addListener(() -> Convert.convertOperation(EditTextHex, EditTextDec, EditTextBin,EditTextSign));
         EditTextBin.addListener(() -> Convert.convertOperation(EditTextHex, EditTextDec, EditTextBin,EditTextSign));
+        MobileAds.initialize(this, initializationStatus -> {});
+        RequestConfiguration requestConfiguration = MobileAds.getRequestConfiguration()
+                .toBuilder()
+                .setMaxAdContentRating(MAX_AD_CONTENT_RATING_G)
+                .build();
 
         Ads.Ads(MainActivity.this);
     }
@@ -206,9 +216,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener,V
         switch (view.getId()) {
             case R.id.But0:
                 if((EditTextBin.getSelectionStart()!=0 && EditTextBin.isFocused()) || (EditTextDec.getSelectionStart()!=0 && EditTextDec.isFocused()) || (EditTextHex.getSelectionStart()!=0 && EditTextHex.isFocused()))
-                {
                     ButtonFunctionsNumbers("0");
-                }
                 break;
             case R.id.But1:
                 ButtonFunctionsNumbers("1");
