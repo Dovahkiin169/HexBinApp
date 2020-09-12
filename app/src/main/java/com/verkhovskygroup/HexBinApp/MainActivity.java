@@ -612,5 +612,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener,V
     protected void onUserLeaveHint() {
         super.onUserLeaveHint();
         saveData(Utility.getTheme(getApplicationContext()));
+        if(Utility.getSign(getApplicationContext()).equals("-") && Objects.requireNonNull(EditTextDec.getText()).toString().equals(""))
+            Utility.setSign(getApplicationContext(), "+");
     }
 }
