@@ -1,14 +1,14 @@
 package com.verkhovskygroup.HexBinApp;
 
-public class Operations{
+public class Operations {
     String Sign;
     Long LastValue;
     String Flag;
-    String OperationsFlag="";
+    String OperationsFlag = "";
 
     public String DecimalToBinary(long number) {
-        if(Sign!= null && Sign.equals("-"))
-            return Long.toBinaryString((-1)*number);
+        if (Sign != null && Sign.equals("-"))
+            return Long.toBinaryString((-1) * number);
         else
             return Long.toBinaryString(number);
     }
@@ -21,7 +21,7 @@ public class Operations{
         StringBuilder hex = new StringBuilder();
         while (d > 0) {
             long Digit = d % base;              // rightmost digit
-            int digit = (int)Digit;
+            int digit = (int) Digit;
             hex.insert(0, digits.charAt(digit));
             d = d / base;
         }
@@ -35,39 +35,39 @@ public class Operations{
         for (int i = 0; i < s.length(); i++) {
             char c = s.charAt(i);
             long d = digits.indexOf(c);
-            val = 16*val + d;
+            val = 16 * val + d;
         }
         return Long.toString(val);
     }
 
     public void Plus(Long Number) {
-        OperationsFlag="+";
-        if(Sign != null && Sign.equals("-"))
-            LastValue = -1*Number;
+        OperationsFlag = "+";
+        if (Sign != null && Sign.equals("-"))
+            LastValue = -1 * Number;
         else
             LastValue = Number;
     }
 
     public void Minus(Long Number) {
-        OperationsFlag="-";
-        if(Sign != null && Sign.equals("-"))
-            LastValue = -1*Number;
+        OperationsFlag = "-";
+        if (Sign != null && Sign.equals("-"))
+            LastValue = -1 * Number;
         else
             LastValue = Number;
     }
 
     public void Multiple(Long Number) {
-        OperationsFlag="*";
-        if(Sign != null && Sign.equals("-"))
-            LastValue = -1*Number;
+        OperationsFlag = "*";
+        if (Sign != null && Sign.equals("-"))
+            LastValue = -1 * Number;
         else
             LastValue = Number;
     }
 
     public void Divide(Long Number) {
-        OperationsFlag="/";
-        if(Sign != null && Sign.equals("-"))
-            LastValue = -1*Number;
+        OperationsFlag = "/";
+        if (Sign != null && Sign.equals("-"))
+            LastValue = -1 * Number;
         else
             LastValue = Number;
     }
@@ -77,47 +77,43 @@ public class Operations{
         switch (OperationsFlag) {
             case "+":
                 try {
-                    if(Sign.equals("-"))
-                        return LastValue + (-1*Number);
+                    if (Sign.equals("-"))
+                        return LastValue + (-1 * Number);
                     else
                         return LastValue + Number;
-                }
-                catch (NumberFormatException e) {
+                } catch (NumberFormatException e) {
                     Flag = "Error";
                 }
                 break;
             case "-":
                 try {
-                    if(Sign.equals("-"))
-                        return LastValue - (-1*Number);
+                    if (Sign.equals("-"))
+                        return LastValue - (-1 * Number);
                     else
                         return LastValue - Number;
-                }
-                catch (NumberFormatException e) {
+                } catch (NumberFormatException e) {
                     Flag = "Error";
                 }
                 break;
             case "*":
                 try {
-                    if(Sign.equals("-"))
-                        return LastValue * (-1*Number);
+                    if (Sign.equals("-"))
+                        return LastValue * (-1 * Number);
                     else
                         return LastValue * Number;
-                }
-                catch (NumberFormatException e) {
+                } catch (NumberFormatException e) {
                     Flag = "Error";
                 }
                 break;
             case "/":
                 try {
-                    if(Sign.equals("-"))
-                        return LastValue / (-1*Number);
-                    else if(Number.equals((long)0))
+                    if (Sign.equals("-"))
+                        return LastValue / (-1 * Number);
+                    else if (Number.equals((long) 0))
                         return (long) 0;
                     else
                         return LastValue / Number;
-                }
-                catch (NumberFormatException e) {
+                } catch (NumberFormatException e) {
                     Flag = "Error";
                 }
                 break;

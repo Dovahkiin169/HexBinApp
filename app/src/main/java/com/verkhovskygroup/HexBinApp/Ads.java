@@ -8,11 +8,11 @@ import com.google.android.gms.ads.LoadAdError;
 
 
 public class Ads {
-    private static final String AD_UNIT_ID = "ca-app-pub-3940256099942544/1033173712";
+    private static final String AD_UNIT_ID = "ca-app-pub-3197360098895857/4609183528";
 
     private InterstitialAd interstitialAd;
 
-    public void Ads(Context context) {
+    public void adsInApp(Context context) {
         interstitialAd = new InterstitialAd(context);
         interstitialAd.setAdUnitId(AD_UNIT_ID);
         interstitialAd.setAdListener(new AdListener() {
