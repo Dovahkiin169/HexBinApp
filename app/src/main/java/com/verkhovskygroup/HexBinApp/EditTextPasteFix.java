@@ -2,10 +2,10 @@ package com.verkhovskygroup.HexBinApp;
 
 import android.content.Context;
 import android.util.AttributeSet;
+
 import java.util.ArrayList;
 
-public class EditTextPasteFix extends androidx.appcompat.widget.AppCompatEditText
-{
+public class EditTextPasteFix extends androidx.appcompat.widget.AppCompatEditText {
     ArrayList<EditTextPasteFixListener> Listener;
 
     public EditTextPasteFix(Context context) {
@@ -24,15 +24,17 @@ public class EditTextPasteFix extends androidx.appcompat.widget.AppCompatEditTex
     }
 
     public void addListener(EditTextPasteFixListener listener) {
-        try { Listener.add(listener); }
-        catch (NullPointerException e) { e.printStackTrace();
+        try {
+            Listener.add(listener);
+        } catch (NullPointerException e) {
+            e.printStackTrace();
         }
     }
 
     @Override
     public boolean onTextContextMenuItem(int id) {
         boolean consumed = super.onTextContextMenuItem(id);
-        switch (id){
+        switch (id) {
             case android.R.id.cut:
                 onTextCut();
                 break;
@@ -45,10 +47,13 @@ public class EditTextPasteFix extends androidx.appcompat.widget.AppCompatEditTex
         return consumed;
     }
 
-    public void onTextCut(){ }
-    public void onTextCopy(){ }
+    public void onTextCut() {
+    }
 
-    public void onTextPaste(){
+    public void onTextCopy() {
+    }
+
+    public void onTextPaste() {
         for (EditTextPasteFixListener listener : Listener) {
             listener.onUpdate();
         }

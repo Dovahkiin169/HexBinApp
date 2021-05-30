@@ -203,7 +203,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener,V
                 .setMaxAdContentRating(MAX_AD_CONTENT_RATING_G)
                 .build();
 
-        Ads.Ads(MainActivity.this);
+        Ads.adsInApp(MainActivity.this);
     }
     @Override
     public void onClick(View view) {
