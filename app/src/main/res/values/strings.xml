@@ -27,9 +27,9 @@
     <string name="ButtonDivideText">/</string>
     <string name="ButtonEqualsText">=</string>
     <string name="textViewBinText">Bin</string>
-    <string name="HexRegex">[0-9A-F]+</string>
+    <string name="HexRegex">[0–9A-F]+</string>
     <string name="DecRegex">\\d+</string>
-    <string name="BinRegex">[0-1]+</string>
+    <string name="BinRegex">[0–1]+</string>
     <string name="MaxQ">Maximum quantity = </string>
     <string name="HexMax">7FFFFFFFFFFFFFFF</string>
     <string name="DecMax">9 223 372 036 854 775 807</string>

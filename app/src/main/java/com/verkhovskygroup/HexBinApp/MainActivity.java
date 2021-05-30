@@ -1,6 +1,5 @@
 package com.verkhovskygroup.HexBinApp;
 
-import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.text.Editable;
@@ -521,54 +520,12 @@ public class MainActivity extends BaseActivity implements View.OnClickListener,V
         Zero.setEnabled(Bl);
     }
 
-    public void ChangeButtonsBackgroundNumbers(int drawable) {
-        One.setBackgroundResource(drawable);
-        Two.setBackgroundResource(drawable);
-        Three.setBackgroundResource(drawable);
-        Four.setBackgroundResource(drawable);
-        Five.setBackgroundResource(drawable);
-        Six.setBackgroundResource(drawable);
-        Seven.setBackgroundResource(drawable);
-        Eight.setBackgroundResource(drawable);
-        Nine.setBackgroundResource(drawable);
-        Zero.setBackgroundResource(drawable);
-
-        Clear.setBackgroundResource(drawable);
-        Delete.setBackgroundResource(drawable);
-    }
-    public void ChangeButtonsBackgroundLettersAndSigns(int drawable) {
-        B.setBackgroundResource(drawable);
-        C.setBackgroundResource(drawable);
-        D.setBackgroundResource(drawable);
-        E.setBackgroundResource(drawable);
-        F.setBackgroundResource(drawable);
-
-        Divide.setBackgroundResource(drawable);
-        Multiple.setBackgroundResource(drawable);
-        Minus.setBackgroundResource(drawable);
-        Plus.setBackgroundResource(drawable);
-        Equals.setBackgroundResource(drawable);
-    }
-
     public void saveData(int theme) {
         Utility.setTheme(getApplicationContext(), theme);
         Utility.setSign(getApplicationContext(), EditTextSign.getText().toString());
         Utility.setData(getApplicationContext(), Objects.requireNonNull(EditTextDec.getText()).toString());
     }
 
-
-    public void recreateActivity()
-    {
-        Intent intent = getIntent();
-        intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN)
-            finishAffinity();
-        else
-            finish();
-        overridePendingTransition(0, 0);
-        startActivity(intent);
-        overridePendingTransition(0, 0);
-    }
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.main_menu, menu);
@@ -576,32 +533,18 @@ public class MainActivity extends BaseActivity implements View.OnClickListener,V
         EditTextSign.setText(Utility.getSign(getApplicationContext()));
         Convert.flag=1;
         Convert.convertOperation(EditTextHex, EditTextDec, EditTextBin,EditTextSign);
-        if (Utility.getTheme(getApplicationContext())<= 1) {
-            menu.getItem(0).setIcon(R.drawable.moon);
-            A.setBackgroundResource(R.drawable.left_top_shape);
-            ChangeButtonsBackgroundNumbers(R.drawable.main_shape);
-            ChangeButtonsBackgroundLettersAndSigns(R.drawable.main_shape_grayed_accent);
-        }
-        else {
-            menu.getItem(0).setIcon(R.drawable.sun);
-            A.setBackgroundResource(R.drawable.left_top_shape_dark);
-            ChangeButtonsBackgroundNumbers(R.drawable.main_shape_dark);
-            ChangeButtonsBackgroundLettersAndSigns(R.drawable.main_shape_grayed_accent_dark);
-        }
         return super.onCreateOptionsMenu(menu);
     }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        if(item.getItemId() == R.id.mybutton && !GetStatus()) {
-            item.setIcon(R.drawable.moon);
+        if(item.getItemId() == R.id.theme_button && !GetStatus()) {
             saveData(1);
-            recreateActivity();
+            recreate();
         }
-        else if (item.getItemId() == R.id.mybutton && GetStatus()) {
-            item.setIcon(R.drawable.sun);
+        else if (item.getItemId() == R.id.theme_button && GetStatus()) {
             saveData(2);
-            recreateActivity();
+            recreate();
         }
         else if (item.getItemId() == R.id.settings)
             Ads.showInterstitial();

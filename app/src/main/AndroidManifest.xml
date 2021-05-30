@@ -2,7 +2,6 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     package="com.verkhovskygroup.HexBinApp">
-
     <uses-permission android:name="android.permission.INTERNET" />
 
     <application
@@ -10,7 +9,7 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/logo"
         android:supportsRtl="true"
-        android:theme="@style/AppThemeDark"
+        android:theme="@style/AppTheme"
         tools:ignore="AllowBackup">
         <meta-data
             android:name="com.google.android.gms.ads.APPLICATION_ID"
@@ -18,7 +17,8 @@
         <activity
             android:name="com.verkhovskygroup.HexBinApp.MainActivity"
             android:configChanges="orientation"
-            android:screenOrientation="portrait">
+            android:screenOrientation="portrait"
+            tools:ignore="LockedOrientationActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

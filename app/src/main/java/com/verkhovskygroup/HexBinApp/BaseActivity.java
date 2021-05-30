@@ -1,8 +1,8 @@
 package com.verkhovskygroup.HexBinApp;
 
 import android.os.Bundle;
-
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatDelegate;
 
 public class BaseActivity extends AppCompatActivity {
     private final static int THEME_White = 1;
@@ -18,10 +18,10 @@ public class BaseActivity extends AppCompatActivity {
     public void updateTheme() {
         if (Utility.getTheme(getApplicationContext()) <= THEME_White) {
             CheckStatus = true;
-            setTheme(R.style.AppTheme);
+            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
         } else if (Utility.getTheme(getApplicationContext()) == THEME_Dark) {
-            setTheme(R.style.AppThemeDark);
             CheckStatus = false;
+            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
         }
     }
 
