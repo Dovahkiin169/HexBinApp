@@ -7,9 +7,4 @@
         android:title=""
         app:showAsAction="ifRoom"
         />
-    <item
-        android:id="@+id/settings"
-        android:title="@string/support_developer"
-        app:showAsAction="never"
-        />
 </menu>

@@ -11,20 +11,13 @@ import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
-
-import com.google.android.gms.ads.MobileAds;
-import com.google.android.gms.ads.RequestConfiguration;
-
 import java.math.BigInteger;
 import java.util.Objects;
-
-import static com.google.android.gms.ads.RequestConfiguration.MAX_AD_CONTENT_RATING_G;
 import static java.lang.Long.parseLong;
 
 
 public class MainActivity extends BaseActivity implements View.OnClickListener,View.OnFocusChangeListener  {
     Convert Convert= new Convert();
-    Ads Ads = new Ads();
     Button Zero, One, Two, Three, Four, Five, Six, Seven, Eight, Nine;
     Button A, B, C, D, E, F;
     Button Clear, Delete, Plus, Minus, Multiple, Divide, Equals;
@@ -196,13 +189,6 @@ public class MainActivity extends BaseActivity implements View.OnClickListener,V
         EditTextHex.addListener(() -> Convert.convertOperation(EditTextHex, EditTextDec, EditTextBin,EditTextSign));
         EditTextDec.addListener(() -> Convert.convertOperation(EditTextHex, EditTextDec, EditTextBin,EditTextSign));
         EditTextBin.addListener(() -> Convert.convertOperation(EditTextHex, EditTextDec, EditTextBin,EditTextSign));
-        MobileAds.initialize(this, initializationStatus -> {});
-        RequestConfiguration requestConfiguration = MobileAds.getRequestConfiguration()
-                .toBuilder()
-                .setMaxAdContentRating(MAX_AD_CONTENT_RATING_G)
-                .build();
-
-        Ads.adsInApp(MainActivity.this);
     }
     @Override
     public void onClick(View view) {
@@ -546,8 +532,6 @@ public class MainActivity extends BaseActivity implements View.OnClickListener,V
             saveData(2);
             recreate();
         }
-        else if (item.getItemId() == R.id.settings)
-            Ads.showInterstitial();
         return super.onOptionsItemSelected(item);
     }
 
